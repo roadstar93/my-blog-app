@@ -1,0 +1,68 @@
+<% include ../partials/header %>
+
+<div class="container ">
+    <div class="row justify-content-around ">
+        <div class="col-12 mb-1">
+            <p class="text-muted text-right">Posted by <%= blog.author.username %> on <%= blog.date.toDateString() %>
+            </p>
+            <hr class="my-2">
+        </div>
+    </div>
+    <div class="row justify-content-around align-items-center text-center">
+        <div class="col-md-3 col-sm-4">
+            <h1 class="display-4"><%= blog.title %></h1>
+        </div>
+        <div class="col-md-7 col-sm-6">
+            <img src="<%= blog.image %>" class="rounded mx-auto d-block img-fluid" alt="Responsive image">
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-md-10">
+            <hr class="my-4">
+        </div>
+    </div>
+    <div class="row justify-content-around mb-5">
+        <div class="col-md-10">
+            <p><%- blog.body %></p>
+
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-outline-primary" href="/blogs/<%=blog._id%>/comments/new">Add Comment</a> 
+                <% if(currentUser && blog.author.id.equals(currentUser._id)) { %>
+                <a class="btn btn-outline-primary" href="/blogs/<%= blog._id %>/edit" role="button">Edit</a> 
+                <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="post" style="display:inline;">
+                    <button class="btn btn-outline-danger">Delete</button>
+                </form>
+                <% } %>
+            </div>
+            <hr>
+
+            <div class="row justify-content-around">
+
+                <div class="col-md-12">
+                    <% blog.comments.forEach(function(comment){ %>
+                    <div class="card bg-light mb-2">
+                        <div class="card-header"><strong><%= comment.author.username %></strong></div>
+                        <div class="card-body">
+                            <p class="card-text"> <%= comment.text %></p>
+                            <div class="text-right">
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                                <a class="btn btn-sm btn-outline-primary"
+                                    href="/blogs/<%=blog._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <form id="delete" action="/blogs/<%=blog._id%>/comments/<%=comment._id%>?_method=DELETE"
+                                    method="post" style="display:inline;">
+                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include ../partials/footer %>

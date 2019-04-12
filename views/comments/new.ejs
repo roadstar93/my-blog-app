@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">
+            Add new comment to <%= blog.title %>
+        </h1>
+        <br>
+        <div style="width: 50%; margin:30px auto; ">
+            <form action="/blogs/<%=blog._id%>/comments" method="POST">
+                <div class="form-group">
+                    <textarea class="form-control" type="text" , name="comment[text]" placeholder="Text"
+                        rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Post Comment</button>
+                </div>
+            </form>
+            <a href="/blogs/<%=blog._id%>">Go back to campsite</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
