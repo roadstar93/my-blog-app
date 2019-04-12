@@ -12,9 +12,22 @@ var middleware = require("../middleware");
 router.get("/blogs", function (req, res) {
     Blog.find({}, function (err, blogs) {
         if (err) {
-            res.send("Error")
+            
+            res.send("Error: " + err.message)
         } else {
             res.render("blogs/index", { blogs: blogs });
+        }
+    }).sort([['date', -1]]);
+});
+
+//Category route
+router.get("/blogs/category/:cat_id", function (req, res) {
+    var category = req.params.cat_id;
+    Blog.find({ category: category }, function (err, catBlogs) {
+        if (err) {
+            res.send("Error")
+        } else {
+            res.render("blogs/index", { blogs: catBlogs });
         }
     });
 });

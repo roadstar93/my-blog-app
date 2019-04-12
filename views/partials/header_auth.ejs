@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blogging</title>
-    <link rel="stylesheet" href="/stylesheets/flat_bootstrap.min.css">  
+    <link rel="stylesheet" href="/stylesheets/flat_bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/main.css">
-    </head>
+</head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
@@ -31,12 +31,12 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Nature</a>
-                        <a class="dropdown-item" href="#">Lifestyle</a>
-                        <a class="dropdown-item" href="#">Health</a>
-                        <a class="dropdown-item" href="#">Sports</a>
-                        <a class="dropdown-item" href="#">Design</a>
-                        <a class="dropdown-item" href="#">Technology</a>
+                        <a class="dropdown-item" href="/blogs/category/Nature">Nature</a>
+                        <a class="dropdown-item" href="/blogs/category/Sports">Lifestyle</a>
+                        <a class="dropdown-item" href="/blogs/category/Health">Health</a>
+                        <a class="dropdown-item" href="/blogs/category/Sports">Sports</a>
+                        <a class="dropdown-item" href="/blogs/category/Design">Design</a>
+                        <a class="dropdown-item" href="/blogs/category/Technology">Technology</a>
                     </div>
                 </li>
                 <% } else { %>
@@ -49,11 +49,12 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Nature</a>
-                        <a class="dropdown-item" href="#">Lifestyle</a>
-                        <a class="dropdown-item" href="#">Health</a>
-                        <a class="dropdown-item" href="#">Sports</a>
-                        <a class="dropdown-item" href="#">Design</a>
+                        <a class="dropdown-item" href="/blogs/category/Nature">Nature</a>
+                        <a class="dropdown-item" href="/blogs/category/Sports">Lifestyle</a>
+                        <a class="dropdown-item" href="/blogs/category/Health">Health</a>
+                        <a class="dropdown-item" href="/blogs/category/Sports">Sports</a>
+                        <a class="dropdown-item" href="/blogs/category/Design">Design</a>
+                        <a class="dropdown-item" href="/blogs/category/Technology">Technology</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -82,14 +83,14 @@
     </nav>
 
     <div class="container">
-            <% if(error && error.length >0) { %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-            <% } %>
-            <% if(success && success.length >0) { %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>
-            <% } %>
+        <% if(error && error.length >0) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
         </div>
+        <% } %>
+        <% if(success && success.length >0) { %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+    </div>

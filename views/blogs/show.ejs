@@ -2,7 +2,8 @@
 
 <div class="container ">
     <div class="row justify-content-around ">
-        <div class="col-12 mb-1">
+        <div class="col-12 mb-1 justify-content-between">
+
             <p class="text-muted text-right">Posted by <%= blog.author.username %> on <%= blog.date.toDateString() %>
             </p>
             <hr class="my-2">
@@ -19,13 +20,12 @@
     <div class="row justify-content-around">
         <div class="col-md-10">
             <hr class="my-4">
-            <p class="text-right"><%= blog.category %></p>
         </div>
     </div>
     <div class="row justify-content-around mb-5">
         <div class="col-md-10">
             <p><%- blog.body %></p>
-
+            <p class="text-muted text-right">Category: <%= blog.category %></p>
             <div class="d-flex justify-content-between">
                 <a class="btn btn-outline-primary" href="/blogs/<%=blog._id%>/comments/new">Add Comment</a>
                 <% if(currentUser && blog.author.id.equals(currentUser._id)) { %>
