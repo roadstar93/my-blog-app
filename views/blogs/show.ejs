@@ -19,6 +19,7 @@
     <div class="row justify-content-around">
         <div class="col-md-10">
             <hr class="my-4">
+            <p class="text-right"><%= blog.category %></p>
         </div>
     </div>
     <div class="row justify-content-around mb-5">
@@ -26,9 +27,9 @@
             <p><%- blog.body %></p>
 
             <div class="d-flex justify-content-between">
-                <a class="btn btn-outline-primary" href="/blogs/<%=blog._id%>/comments/new">Add Comment</a> 
+                <a class="btn btn-outline-primary" href="/blogs/<%=blog._id%>/comments/new">Add Comment</a>
                 <% if(currentUser && blog.author.id.equals(currentUser._id)) { %>
-                <a class="btn btn-outline-primary" href="/blogs/<%= blog._id %>/edit" role="button">Edit</a> 
+                <a class="btn btn-outline-primary" href="/blogs/<%= blog._id %>/edit" role="button">Edit</a>
                 <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="post" style="display:inline;">
                     <button class="btn btn-outline-danger">Delete</button>
                 </form>

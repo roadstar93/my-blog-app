@@ -30,6 +30,7 @@ router.post("/blogs", middleware.isLoggedIn, function (req, res) {
     var title = req.body.title,
         image = req.body.image,
         body = req.body.body,
+        category = req.body.category,
         author = {
             id: req.user._id,
             username: req.user.username
@@ -38,6 +39,7 @@ router.post("/blogs", middleware.isLoggedIn, function (req, res) {
         title: title,
         image: image,
         body: body,
+        category: category,
         author: author
     }
     Blog.create(newBlog, function (err, newBlog) {
