@@ -19,7 +19,7 @@ var ip = process.env.IP || "0.0.0.0";
 
 //Database setup
 var dbCloud;
-var dbConnection = dbCloud || "mongodb://localhost/blog_main";
+var dbConnection = process.env.dbCloud || "mongodb://localhost/blog_main";
 
 //App setup 
 mongoose.connect(dbConnection, { useNewUrlParser: true }); //DB Connection
