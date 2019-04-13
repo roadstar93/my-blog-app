@@ -15,11 +15,12 @@ var blogRoutes = require("./routes/blogs"),
     indexRoutes = require("./routes/index");
 
 //Database setup
-var DATABASE_cloud = "mongodb+srv://roadstar93:uJfDmkH25uMKKFv@cluster0-1zeft.mongodb.net/blog-portfolio?retryWrites=true";
-var DATABASE_local = "mongodb://localhost/blog_main";
+var dbCloud;
+
+var dbConnection = dbCloud || "mongodb://localhost/blog_main";
 
 //App setup 
-mongoose.connect(DATABASE_cloud, { useNewUrlParser: true }); //DB Connection
+mongoose.connect(dbConnection, { useNewUrlParser: true }); //DB Connection
 app.use(bodyParser.urlencoded({ extended: true })); //Using body-parser
 app.use(methodOverride("_method")); //Setting method-override to look for "_method in html".
 app.use(expressSanitizer()); //Using sanitizer for text fields so we do not get code injected
