@@ -18,7 +18,7 @@ var port = process.env.PORT || 5000;
 var ip = process.env.IP || "0.0.0.0";
 
 //Database setup
-var dbCloud;
+var dbCloud; //Declared to be used on heroku as an enviroment variable
 var dbConnection = process.env.dbCloud || "mongodb://localhost/blog_main";
 
 //App setup 
