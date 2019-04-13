@@ -29,7 +29,7 @@ router.get("/blogs/category/:cat_id", function (req, res) {
         } else {
             res.render("blogs/index", { blogs: catBlogs });
         }
-    });
+    }).sort([['date', -1]]);
 });
 
 //New Route
@@ -74,7 +74,7 @@ router.get("/blogs/:id", function (req, res) {
         } else {
             res.render("blogs/show", { blog: idBlog });
         }
-    })
+    });
 });
 
 //Edit route
