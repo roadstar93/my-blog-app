@@ -1,21 +1,25 @@
 //Variable declaration
-var express          = require("express"),
-    mongoose         = require("mongoose"),
-    bodyParser       = require("body-parser"),
-    methodOverride   = require("method-override"),
+var express = require("express"),
+    mongoose = require("mongoose"),
+    bodyParser = require("body-parser"),
+    methodOverride = require("method-override"),
     expressSanitizer = require("express-sanitizer"),
-    flash            = require("connect-flash"),
-    User             = require("./models/users"),
-    passport         = require("passport"),
-    LocalStrategy    = require("passport-local"),
-    app              = express();
+    flash = require("connect-flash"),
+    User = require("./models/users"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
+    app = express();
 
-var blogRoutes      = require("./routes/blogs"),
-    commentRoutes   = require("./routes/comments"),
-    indexRoutes     = require("./routes/index");
+var blogRoutes = require("./routes/blogs"),
+    commentRoutes = require("./routes/comments"),
+    indexRoutes = require("./routes/index");
+
+//Database setup
+var DATABASE_cloud = "mongodb+srv://roadstar93:uJfDmkH25uMKKFv@cluster0-1zeft.mongodb.net/blog-portfolio?retryWrites=true";
+var DATABASE_local = "mongodb://localhost/blog_main";
 
 //App setup 
-mongoose.connect("mongodb://localhost/blog_main", { useNewUrlParser: true }); //DB Connection
+mongoose.connect(DATABASE_cloud, { useNewUrlParser: true }); //DB Connection
 app.use(bodyParser.urlencoded({ extended: true })); //Using body-parser
 app.use(methodOverride("_method")); //Setting method-override to look for "_method in html".
 app.use(expressSanitizer()); //Using sanitizer for text fields so we do not get code injected
@@ -38,9 +42,9 @@ passport.deserializeUser(User.deserializeUser());
 
 //Midleware to pass user info to all routes
 app.use(function (req, res, next) { //passing data inside the function to all routes
-    res.locals.currentUser = req.user; 
-    res.locals.error       = req.flash("error");
-    res.locals.success     = req.flash("success");
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 })
 

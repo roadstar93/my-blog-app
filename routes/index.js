@@ -42,7 +42,7 @@ router.post("/login", passport.authenticate("local", {
     successRedirect: "/blogs",
     failureRedirect: "/login"
 }), function (req, res) {
-
+    
 })
 
 //logout route
@@ -52,12 +52,5 @@ router.get("/logout", function (req, res) {
     res.redirect("/blogs")
 })
 
-//writing middlware
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login")
-}
 
 module.exports = router;
