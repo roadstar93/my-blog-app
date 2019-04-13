@@ -14,9 +14,11 @@ var blogRoutes = require("./routes/blogs"),
     commentRoutes = require("./routes/comments"),
     indexRoutes = require("./routes/index");
 
+var port = process.env.PORT || 5000;
+var ip = process.env.IP || "0.0.0.0";
+
 //Database setup
 var dbCloud;
-
 var dbConnection = dbCloud || "mongodb://localhost/blog_main";
 
 //App setup 
@@ -27,6 +29,7 @@ app.use(expressSanitizer()); //Using sanitizer for text fields so we do not get 
 app.set("view engine", "ejs"); //Setting view engine to ejs
 app.use(express.static("public")); //Making sure the app will use the public folder
 app.use(flash()); //This needs to be above passport declaration
+
 
 //========Passport configuration=============
 app.use(require("express-session")({ //Initializing  express sesion
@@ -55,8 +58,8 @@ app.use(commentRoutes);
 
 
 //Server details
-app.listen(5000, function () {
-    console.log("Server started");
+app.listen(port, ip, function(){
+    console.log("Server started")
 });
 
 
