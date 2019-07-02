@@ -1,6 +1,6 @@
 
 
-##A blog app created with Node, MongoDB, Express, EJS and Bootstrap 4
+<h1>A blog app created with Node, MongoDB, Express, EJS and Bootstrap 4</h1>
 
 <p>The blog connects to the database to get posts, comments and users and has a working user session.
 <br>
